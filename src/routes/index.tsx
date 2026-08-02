@@ -1,4 +1,7 @@
+import { useEffect, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { RotateCw } from "lucide-react";
+import IntroGlobe from "@/components/IntroGlobe";
 import { HeroFlipCard } from "@/components/HeroFlipCard";
 import { Reveal } from "@/components/Reveal";
 import { KdMark } from "@/components/KdCard";
@@ -96,10 +99,28 @@ const subsidiaries = [
   "motse pele",
 ];
 
-
 function Index() {
+  const [showGlobe, setShowGlobe] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const seen = sessionStorage.getItem("kdinc_globe_seen");
+      if (!seen) {
+        setShowGlobe(true);
+      }
+    }
+  }, []);
+
+  const handleGlobeDone = () => {
+    if (typeof window !== "undefined") {
+      sessionStorage.setItem("kdinc_globe_seen", "true");
+    }
+    setShowGlobe(false);
+  };
+
   return (
     <div className="min-h-screen bg-ink">
+      {showGlobe && <IntroGlobe onDone={handleGlobeDone} />}
       <SiteHeader />
       <main>
         <HeroFlipCard />
@@ -191,9 +212,6 @@ function IngeniousSection() {
     </section>
   );
 }
-
-import { useState } from "react";
-import { RotateCw } from "lucide-react";
 
 /* ---------- White: the triad ---------- */
 function TriadSection() {
