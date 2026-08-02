@@ -192,6 +192,9 @@ function IngeniousSection() {
   );
 }
 
+import { useState } from "react";
+import { RotateCw } from "lucide-react";
+
 /* ---------- White: the triad ---------- */
 function TriadSection() {
   return (
@@ -211,31 +214,139 @@ function TriadSection() {
         <div className="mt-16 grid gap-8 md:grid-cols-3">
           {triad.map((item, i) => (
             <Reveal key={item.title} delay={i * 110}>
-              <article className="group h-full overflow-hidden rounded-3xl bg-paper shadow-float ring-1 ring-ink/5 transition-transform duration-500 hover:-translate-y-2">
-                <div className="overflow-hidden">
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    loading="lazy"
-                    width={1008}
-                    height={800}
-                    className="h-52 w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                </div>
-                <div className="p-7">
-                  <p className="eyebrow text-brand">{item.index}</p>
-                  <h3 className="mt-3 font-display text-2xl leading-tight font-bold tracking-tight uppercase">
-                    {item.title}
-                  </h3>
-                  <p className="mt-4 leading-relaxed font-light text-ink/65">{item.body}</p>
-                  <p className="mt-6 eyebrow text-ink/40">{item.caption}</p>
-                </div>
-              </article>
+              <TriadFlipCard item={item} />
             </Reveal>
           ))}
         </div>
       </div>
     </section>
+  );
+}
+
+function TriadFlipCard({ item }: { item: (typeof triad)[number] }) {
+  const [flipped, setFlipped] = useState(false);
+
+  const backDetails: Record<string, { subtitle: string; points: string[] }> = {
+    "Skilled Professionals": {
+      subtitle: "Talent Execution Strategy",
+      points: [
+        "Curated cross-disciplinary sector specialists",
+        "Deep local market expertise & township roots",
+        "Empowerment-driven executive leadership",
+        "Mentorship & sustainable capacity building",
+      ],
+    },
+    "Efficient Business Processes": {
+      subtitle: "Operational Discipline",
+      points: [
+        "Lean, measured, & repeatable frameworks",
+        "Automated compliance & risk management",
+        "Cross-subsidiary resource optimization",
+        "Data-informed throughput & capital agility",
+      ],
+    },
+    "Cutting-Edge Technologies": {
+      subtitle: "Next-Gen Tech Architecture",
+      points: [
+        "Low-bandwidth, offline-capable digital platforms",
+        "USSD & fintech API ecosystem integration",
+        "High-reliability rural telecom infrastructure",
+        "Localized health tech & logistics tracking",
+      ],
+    },
+  };
+
+  const details = backDetails[item.title] || {
+    subtitle: "Strategic Advantage",
+    points: ["Scalable impact", "Market leadership", "Sustainable growth"],
+  };
+
+  return (
+    <div
+      className="group h-[460px] cursor-pointer select-none rounded-3xl [perspective:1200px] focus:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+      onClick={() => setFlipped(!flipped)}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          setFlipped(!flipped);
+        }
+      }}
+      tabIndex={0}
+      role="button"
+      aria-label={`${item.title} card. Click to flip over.`}
+    >
+      <div
+        className="card-3d relative h-full w-full rounded-3xl shadow-float ring-1 ring-ink/10 transition-transform duration-700 group-hover:scale-[1.01]"
+        style={{ transform: flipped ? "rotateY(180deg)" : "rotateY(0deg)" }}
+      >
+        {/* Front Face */}
+        <article className="backface-hidden absolute inset-0 flex flex-col overflow-hidden rounded-3xl bg-paper">
+          <div className="relative h-48 w-full overflow-hidden">
+            <img
+              src={item.image}
+              alt={item.title}
+              loading="lazy"
+              width={1008}
+              height={800}
+              className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            <span className="absolute top-4 right-4 flex items-center gap-1.5 rounded-full bg-ink/75 backdrop-blur-md px-3 py-1 text-[0.65rem] font-semibold text-paper uppercase tracking-wider">
+              <RotateCw className="h-3 w-3 text-brand animate-spin-slow" />
+              Flip
+            </span>
+          </div>
+          <div className="flex flex-1 flex-col justify-between p-6">
+            <div>
+              <p className="eyebrow text-brand">{item.index}</p>
+              <h3 className="mt-2 font-display text-xl leading-tight font-bold tracking-tight uppercase">
+                {item.title}
+              </h3>
+              <p className="mt-3 text-sm leading-relaxed font-light text-ink/70">{item.body}</p>
+            </div>
+            <div className="flex items-center justify-between border-t border-ink/10 pt-4 mt-2">
+              <p className="eyebrow text-ink/40">{item.caption}</p>
+              <span className="text-xs font-semibold text-brand hover:underline flex items-center gap-1">
+                Click to flip <RotateCw className="h-3 w-3" />
+              </span>
+            </div>
+          </div>
+        </article>
+
+        {/* Back Face */}
+        <article
+          className="backface-hidden absolute inset-0 flex flex-col justify-between overflow-hidden rounded-3xl bg-ink p-7 text-paper shadow-card"
+          style={{ transform: "rotateY(180deg)" }}
+        >
+          <div>
+            <div className="flex items-center justify-between border-b border-paper/15 pb-4">
+              <span className="eyebrow text-brand">{item.index} / Deep Dive</span>
+              <span className="flex items-center gap-1 text-xs text-paper/60">
+                <RotateCw className="h-3 w-3 text-brand" /> Click to flip back
+              </span>
+            </div>
+            <h3 className="mt-4 font-display text-2xl font-bold uppercase text-paper">
+              {item.title}
+            </h3>
+            <p className="mt-1 text-xs font-medium uppercase tracking-wider text-brand">
+              {details.subtitle}
+            </p>
+            <ul className="mt-5 space-y-3">
+              {details.points.map((pt, idx) => (
+                <li key={idx} className="flex items-start gap-2.5 text-sm font-light text-paper/85">
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand" />
+                  <span>{pt}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="rounded-2xl bg-paper/5 p-4 border border-paper/10 text-center">
+            <p className="text-xs font-light text-paper/70">
+              Disrupting African sectors through strategy, technology & people.
+            </p>
+          </div>
+        </article>
+      </div>
+    </div>
   );
 }
 

@@ -1,27 +1,35 @@
 import { useEffect, useRef, useState } from "react";
 import { KdCardFace } from "./KdCard";
 import africaNetwork from "@/assets/africa-network.jpg";
+import { RotateCw } from "lucide-react";
 
 /**
  * Phase 1 — The Landing (Black).
- * The kd.inc physical card fills the view, then flips on scroll to reveal
+ * The kd.inc physical card fills the view, then flips on scroll or click to reveal
  * the Mission Matrix on its reverse face.
  */
 export function HeroFlipCard() {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const [flipped, setFlipped] = useState(false);
+  const [scrollFlipped, setScrollFlipped] = useState(false);
+  const [manualFlipped, setManualFlipped] = useState<boolean | null>(null);
+
+  const flipped = manualFlipped !== null ? manualFlipped : scrollFlipped;
 
   useEffect(() => {
     const onScroll = () => {
       const el = sectionRef.current;
       if (!el) return;
       const progress = -el.getBoundingClientRect().top / window.innerHeight;
-      setFlipped(progress > 0.28);
+      setScrollFlipped(progress > 0.28);
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const toggleFlip = () => {
+    setManualFlipped((prev) => (prev === null ? !scrollFlipped : !prev));
+  };
 
   return (
     <section ref={sectionRef} className="relative h-[210vh] bg-ink" aria-label="kd.inc">
@@ -36,11 +44,21 @@ export function HeroFlipCard() {
         />
 
         <div
-          className="container-inline relative w-full max-w-[min(88vw,720px)]"
+          className="container-inline relative w-full max-w-[min(88vw,720px)] cursor-pointer group select-none focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-4 focus-visible:ring-offset-ink rounded-[2rem]"
           style={{ perspective: "1600px" }}
+          onClick={toggleFlip}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              toggleFlip();
+            }
+          }}
+          tabIndex={0}
+          role="button"
+          aria-label={flipped ? "Card showing Mission Matrix. Click to flip back to front." : "Card showing kd.inc brand face. Click to flip to back."}
         >
           <div
-            className="card-3d relative aspect-[16/9.6] w-full"
+            className="card-3d relative aspect-[16/9.6] w-full transition-transform duration-500 group-hover:scale-[1.015]"
             style={{ transform: flipped ? "rotateY(180deg)" : "rotateY(0deg)" }}
           >
             <div className="backface-hidden absolute inset-0">
@@ -56,13 +74,13 @@ export function HeroFlipCard() {
           </div>
         </div>
 
-        <p
-          className={`mt-10 eyebrow text-paper/50 transition-opacity duration-500 ${
-            flipped ? "opacity-0" : "opacity-100"
-          }`}
+        <button
+          onClick={toggleFlip}
+          className="mt-8 eyebrow text-paper/70 transition-all duration-300 hover:text-brand flex items-center gap-2 px-4 py-2 rounded-full bg-paper/5 hover:bg-paper/10 border border-paper/10"
         >
-          Scroll down
-        </p>
+          <RotateCw className="w-3.5 h-3.5 animate-spin-slow text-brand" />
+          <span>{flipped ? "Click to view front face" : "Click card or scroll to flip"}</span>
+        </button>
       </div>
     </section>
   );
