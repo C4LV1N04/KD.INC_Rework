@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { HeroFlipCard } from "@/components/HeroFlipCard";
 import { Reveal } from "@/components/Reveal";
 import { KdMark } from "@/components/KdCard";
@@ -535,15 +535,100 @@ function ContactSection() {
 
 function SiteFooter() {
   return (
-    <footer className="border-t border-paper/10 bg-ink py-12">
-      <div className="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-6 px-5 sm:flex sm:justify-between md:px-8">
-        <div className="flex min-w-0 items-center text-paper">
-          <KdMark className="text-[1.5rem]" />
+    <footer className="border-t border-paper/10 bg-ink pt-16 pb-12 text-paper">
+      <div className="mx-auto max-w-7xl px-5 md:px-8">
+        <div className="grid gap-12 lg:grid-cols-4 md:grid-cols-2">
+          {/* Brand & Mark */}
+          <div className="space-y-4">
+            <div className="flex items-center text-paper">
+              <KdMark className="text-[1.8rem]" />
+            </div>
+            <p className="text-sm font-light text-paper/70 leading-relaxed">
+              An ingeniously disruptive investment firm and strategic partner in Africa, driving
+              digital inclusion across key landscapes.
+            </p>
+          </div>
+
+          {/* Subsidiaries List */}
+          <div>
+            <h4 className="eyebrow text-brand mb-4">Our Subsidiaries</h4>
+            <ul className="grid grid-cols-2 gap-x-4 gap-y-2 text-sm font-light text-paper/80">
+              {subsidiaries.map((name) => (
+                <li key={name} className="capitalize hover:text-brand transition-colors">
+                  <a href="#subsidiaries">{name}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Get in Touch */}
+          <div>
+            <h4 className="eyebrow text-brand mb-4">Get In Touch</h4>
+            <div className="space-y-3 text-sm font-light text-paper/85">
+              <p>
+                <span className="block text-xs font-semibold text-paper/50 uppercase tracking-wider">Phone</span>
+                <a href="tel:+271145657890" className="hover:text-brand transition-colors">
+                  +27 (0)11 456 57890
+                </a>
+              </p>
+              <p>
+                <span className="block text-xs font-semibold text-paper/50 uppercase tracking-wider">Email</span>
+                <a href="mailto:info@kdinc.co.za" className="hover:text-brand transition-colors">
+                  info@kdinc.co.za
+                </a>
+              </p>
+              <p>
+                <span className="block text-xs font-semibold text-paper/50 uppercase tracking-wider">Website</span>
+                <a
+                  href="https://kdinc.co.za/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hover:text-brand transition-colors"
+                >
+                  https://kdinc.co.za/
+                </a>
+              </p>
+            </div>
+          </div>
+
+          {/* Legal Pages */}
+          <div>
+            <h4 className="eyebrow text-brand mb-4">Legal & Policies</h4>
+            <ul className="space-y-2 text-sm font-light text-paper/80">
+              <li>
+                <Link to="/privacy-policy" className="hover:text-brand transition-colors">
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link to="/disclaimer" className="hover:text-brand transition-colors">
+                  Disclaimer
+                </Link>
+              </li>
+              <li>
+                <Link to="/terms-of-use" className="hover:text-brand transition-colors">
+                  Terms of Use
+                </Link>
+              </li>
+            </ul>
+          </div>
         </div>
-        <p className="shrink-0 text-sm font-light text-paper/45">
-          © {new Date().getFullYear()} kd.inc — ingeniously disruptive
-          <span className="text-brand">.</span>
-        </p>
+
+        {/* Bottom Bar */}
+        <div className="mt-14 border-t border-paper/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-light text-paper/45">
+          <p>© {new Date().getFullYear()} kd.inc — ingeniously disruptive<span className="text-brand">.</span></p>
+          <div className="flex items-center gap-6">
+            <Link to="/privacy-policy" className="hover:text-paper transition-colors">
+              Privacy Policy
+            </Link>
+            <Link to="/disclaimer" className="hover:text-paper transition-colors">
+              Disclaimer
+            </Link>
+            <Link to="/terms-of-use" className="hover:text-paper transition-colors">
+              Terms of Use
+            </Link>
+          </div>
+        </div>
       </div>
     </footer>
   );
