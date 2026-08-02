@@ -17,16 +17,16 @@ export const Route = createFileRoute("/terms-of-use")({
 
 function TermsOfUsePage() {
   return (
-    <div className="min-h-screen bg-ink text-paper selection:bg-brand selection:text-paper">
+    <div className="min-h-screen bg-paper text-ink selection:bg-brand selection:text-paper">
       {/* Header */}
-      <header className="border-b border-paper/10 bg-ink/90 backdrop-blur-md sticky top-0 z-50">
+      <header className="border-b border-ink/10 bg-paper/95 backdrop-blur-md sticky top-0 z-50">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 md:px-8">
-          <Link to="/" className="flex items-center text-paper hover:opacity-80 transition-opacity">
+          <Link to="/" className="flex items-center text-ink hover:opacity-80 transition-opacity">
             <KdMark className="text-[1.6rem]" />
           </Link>
           <Link
             to="/"
-            className="eyebrow flex items-center gap-2 rounded-full border border-paper/20 px-4 py-2 text-xs text-paper/80 transition-colors hover:bg-paper hover:text-ink"
+            className="eyebrow flex items-center gap-2 rounded-full border border-ink/20 px-4 py-2 text-xs text-ink/80 transition-colors hover:bg-ink hover:text-paper"
           >
             <ArrowLeft className="h-3.5 w-3.5" /> Back to Home
           </Link>
@@ -40,14 +40,14 @@ function TermsOfUsePage() {
           <span className="eyebrow">Legal Document</span>
         </div>
 
-        <h1 className="mt-4 font-display text-4xl font-extrabold tracking-tight uppercase sm:text-5xl md:text-6xl text-paper">
+        <h1 className="mt-4 font-display text-4xl font-extrabold tracking-tight uppercase sm:text-5xl md:text-6xl text-ink">
           Terms Of Use
         </h1>
-        <p className="mt-4 text-sm font-light text-paper/50 border-b border-paper/10 pb-8">
+        <p className="mt-4 text-sm font-medium text-ink/60 border-b border-ink/10 pb-8">
           Terms and Conditions of Use Agreement
         </p>
 
-        <div className="mt-10 space-y-8 leading-relaxed font-light text-paper/85 text-base md:text-lg">
+        <div className="mt-10 space-y-8 leading-relaxed font-normal text-ink/85 text-base md:text-lg">
           <p>
             By using our website you are agreeing to comply with and be bound by the following terms of
             use. Review the terms carefully, and if you do not agree with them, do not use this
@@ -64,8 +64,8 @@ function TermsOfUsePage() {
             is your responsibility to review the latest agreement.
           </p>
 
-          <section className="space-y-3 border-t border-paper/10 pt-8">
-            <h2 className="font-display text-2xl font-bold uppercase text-paper tracking-tight">
+          <section className="space-y-3 border-t border-ink/10 pt-8">
+            <h2 className="font-display text-2xl font-bold uppercase text-ink tracking-tight">
               Copyright & Intellectual Property
             </h2>
             <p>
@@ -80,7 +80,7 @@ function TermsOfUsePage() {
                 href="https://kdinc.co.za/"
                 target="_blank"
                 rel="noreferrer"
-                className="text-brand underline underline-offset-4 hover:text-paper"
+                className="text-brand font-semibold underline underline-offset-4 hover:text-ink"
               >
                 https://kdinc.co.za/
               </a>{" "}
@@ -89,12 +89,12 @@ function TermsOfUsePage() {
             </p>
           </section>
 
-          <section className="space-y-3 border-t border-paper/10 pt-8">
-            <h2 className="font-display text-2xl font-bold uppercase text-paper tracking-tight">
+          <section className="space-y-3 border-t border-ink/10 pt-8">
+            <h2 className="font-display text-2xl font-bold uppercase text-ink tracking-tight">
               Limited License & Permitted Uses
             </h2>
             <p>You are granted a non-exclusive, non-transferable, revocable license to:</p>
-            <ul className="list-disc pl-6 space-y-2 text-paper/80">
+            <ul className="list-disc pl-6 space-y-2 text-ink/80 font-normal">
               <li>Use the site strictly in accordance with this agreement.</li>
               <li>Use the site solely for internal, personal, non-commercial purposes.</li>
               <li>
@@ -103,14 +103,14 @@ function TermsOfUsePage() {
                 usage of that information.
               </li>
             </ul>
-            <p className="text-paper/70 italic text-sm pt-2">
+            <p className="text-ink/70 italic text-sm pt-2">
               You are not granted permission to use any information printed from our site in any type of
               litigation or arbitration, under any circumstances.
             </p>
           </section>
 
-          <section className="space-y-3 border-t border-paper/10 pt-8">
-            <h2 className="font-display text-2xl font-bold uppercase text-paper tracking-tight">
+          <section className="space-y-3 border-t border-ink/10 pt-8">
+            <h2 className="font-display text-2xl font-bold uppercase text-ink tracking-tight">
               Restrictions and Prohibitions of Use
             </h2>
             <p>
@@ -118,7 +118,7 @@ function TermsOfUsePage() {
               materials on this site, are subject to the following restrictions and prohibitions of
               use:
             </p>
-            <ul className="list-disc pl-6 space-y-3 text-paper/80">
+            <ul className="list-disc pl-6 space-y-3 text-ink/80 font-normal">
               <li>
                 You may not copy, print (except as expressed above), republish, distribute, display,
                 sell, rent, lease, loan, transmit, or otherwise make available in any form, or by any
@@ -134,21 +134,21 @@ function TermsOfUsePage() {
             </ul>
           </section>
 
-          <section className="space-y-4 border-t border-paper/10 pt-8">
-            <h2 className="font-display text-2xl font-bold uppercase text-paper tracking-tight">
+          <section className="space-y-4 border-t border-ink/10 pt-8">
+            <h2 className="font-display text-2xl font-bold uppercase text-ink tracking-tight">
               Get In Touch
             </h2>
             <p>If you have any questions or inquiries regarding these Terms of Use, please contact us.</p>
             <div className="flex flex-wrap gap-4 pt-2">
               <a
                 href="mailto:info@kdinc.co.za"
-                className="inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-semibold text-paper hover:bg-brand-deep transition-colors"
+                className="inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-semibold text-paper hover:bg-brand-deep transition-colors shadow-sm"
               >
                 <Mail className="h-4 w-4" /> Email info@kdinc.co.za
               </a>
               <a
                 href="tel:+271145657890"
-                className="inline-flex items-center gap-2 rounded-full border border-paper/20 px-6 py-3 text-sm font-semibold text-paper hover:bg-paper hover:text-ink transition-colors"
+                className="inline-flex items-center gap-2 rounded-full border border-ink/20 px-6 py-3 text-sm font-semibold text-ink hover:bg-ink hover:text-paper transition-colors"
               >
                 <Phone className="h-4 w-4" /> Call +27 11 456 57890
               </a>
@@ -158,7 +158,7 @@ function TermsOfUsePage() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-paper/10 bg-ink py-8 text-center text-sm font-light text-paper/45">
+      <footer className="border-t border-ink/10 bg-paper py-8 text-center text-sm font-light text-ink/60">
         <p>© {new Date().getFullYear()} kd.inc — ingeniously disruptive<span className="text-brand">.</span></p>
       </footer>
     </div>

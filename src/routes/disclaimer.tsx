@@ -17,16 +17,16 @@ export const Route = createFileRoute("/disclaimer")({
 
 function DisclaimerPage() {
   return (
-    <div className="min-h-screen bg-ink text-paper selection:bg-brand selection:text-paper">
+    <div className="min-h-screen bg-paper text-ink selection:bg-brand selection:text-paper">
       {/* Header */}
-      <header className="border-b border-paper/10 bg-ink/90 backdrop-blur-md sticky top-0 z-50">
+      <header className="border-b border-ink/10 bg-paper/95 backdrop-blur-md sticky top-0 z-50">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 md:px-8">
-          <Link to="/" className="flex items-center text-paper hover:opacity-80 transition-opacity">
+          <Link to="/" className="flex items-center text-ink hover:opacity-80 transition-opacity">
             <KdMark className="text-[1.6rem]" />
           </Link>
           <Link
             to="/"
-            className="eyebrow flex items-center gap-2 rounded-full border border-paper/20 px-4 py-2 text-xs text-paper/80 transition-colors hover:bg-paper hover:text-ink"
+            className="eyebrow flex items-center gap-2 rounded-full border border-ink/20 px-4 py-2 text-xs text-ink/80 transition-colors hover:bg-ink hover:text-paper"
           >
             <ArrowLeft className="h-3.5 w-3.5" /> Back to Home
           </Link>
@@ -40,14 +40,14 @@ function DisclaimerPage() {
           <span className="eyebrow">Legal Document</span>
         </div>
 
-        <h1 className="mt-4 font-display text-4xl font-extrabold tracking-tight uppercase sm:text-5xl md:text-6xl text-paper">
+        <h1 className="mt-4 font-display text-4xl font-extrabold tracking-tight uppercase sm:text-5xl md:text-6xl text-ink">
           Disclaimer
         </h1>
-        <p className="mt-4 text-sm font-light text-paper/50 border-b border-paper/10 pb-8">
+        <p className="mt-4 text-sm font-medium text-ink/60 border-b border-ink/10 pb-8">
           Official Legal Notice & Website Disclaimer
         </p>
 
-        <div className="mt-10 space-y-8 leading-relaxed font-light text-paper/85 text-base md:text-lg">
+        <div className="mt-10 space-y-8 leading-relaxed font-normal text-ink/85 text-base md:text-lg">
           <p>
             All information contained in this website is intended for general information purposes
             only. The information is provided by Kdinc. We try to keep the information up-to-date and
@@ -57,8 +57,8 @@ function DisclaimerPage() {
             on this website. Use this information at your own risk.
           </p>
 
-          <section className="space-y-3 border-t border-paper/10 pt-8">
-            <h2 className="font-display text-2xl font-bold uppercase text-paper tracking-tight">
+          <section className="space-y-3 border-t border-ink/10 pt-8">
+            <h2 className="font-display text-2xl font-bold uppercase text-ink tracking-tight">
               Limitation of Liability
             </h2>
             <p>
@@ -68,8 +68,8 @@ function DisclaimerPage() {
             </p>
           </section>
 
-          <section className="space-y-3 border-t border-paper/10 pt-8">
-            <h2 className="font-display text-2xl font-bold uppercase text-paper tracking-tight">
+          <section className="space-y-3 border-t border-ink/10 pt-8">
+            <h2 className="font-display text-2xl font-bold uppercase text-ink tracking-tight">
               Third Party Links
             </h2>
             <p>
@@ -80,21 +80,21 @@ function DisclaimerPage() {
             </p>
           </section>
 
-          <section className="space-y-4 border-t border-paper/10 pt-8">
-            <h2 className="font-display text-2xl font-bold uppercase text-paper tracking-tight">
+          <section className="space-y-4 border-t border-ink/10 pt-8">
+            <h2 className="font-display text-2xl font-bold uppercase text-ink tracking-tight">
               Questions or Concerns?
             </h2>
             <p>If you have any questions regarding this Disclaimer, please reach out to us.</p>
             <div className="flex flex-wrap gap-4 pt-2">
               <a
                 href="mailto:info@kdinc.co.za"
-                className="inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-semibold text-paper hover:bg-brand-deep transition-colors"
+                className="inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-semibold text-paper hover:bg-brand-deep transition-colors shadow-sm"
               >
                 <Mail className="h-4 w-4" /> Email info@kdinc.co.za
               </a>
               <a
                 href="tel:+271145657890"
-                className="inline-flex items-center gap-2 rounded-full border border-paper/20 px-6 py-3 text-sm font-semibold text-paper hover:bg-paper hover:text-ink transition-colors"
+                className="inline-flex items-center gap-2 rounded-full border border-ink/20 px-6 py-3 text-sm font-semibold text-ink hover:bg-ink hover:text-paper transition-colors"
               >
                 <Phone className="h-4 w-4" /> Call +27 11 456 57890
               </a>
@@ -104,7 +104,7 @@ function DisclaimerPage() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-paper/10 bg-ink py-8 text-center text-sm font-light text-paper/45">
+      <footer className="border-t border-ink/10 bg-paper py-8 text-center text-sm font-light text-ink/60">
         <p>© {new Date().getFullYear()} kd.inc — ingeniously disruptive<span className="text-brand">.</span></p>
       </footer>
     </div>
